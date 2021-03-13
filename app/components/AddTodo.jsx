@@ -22,7 +22,7 @@ export default function AddTodo({ onSubmit }) {
         value={inputValue}
         placeholder="Введите название"
         autoCorrect={false}
-        autoCapitalize="none"
+        autoCapitalize="sentences"
       />
       <Button title="Добавить" onPress={pressHandler} />
     </View>
