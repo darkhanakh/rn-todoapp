@@ -17,7 +17,7 @@ export default function MainScreen({ addTodo, deleteTodo, todos, openTodo }) {
         <View style={styles.imageWrapper}>
           <Image
             style={styles.image}
-            source={require('./../../assets/no-items.png')}
+            source={require('./../../assets/images/no-items.png')}
             resizeMode="contain"
           />
         </View>
