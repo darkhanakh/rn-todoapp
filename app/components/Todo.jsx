@@ -1,14 +1,15 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import AppText from './common/AppText';
 
-export default function Todo({ todo, deleteTodo, onOpen }) {
+export default function Todo({ todo: { title, id }, deleteTodo, onOpen }) {
   return (
     <TouchableOpacity
       activeOpacity={0.5}
-      onPress={() => onOpen(todo.id)}
-      onLongPress={() => deleteTodo(todo.id)}>
+      onPress={() => onOpen(id)}
+      onLongPress={() => deleteTodo(id)}>
       <View style={styles.todo}>
-        <Text>{todo.title}</Text>
+        <AppText>{title}</AppText>
       </View>
     </TouchableOpacity>
   );

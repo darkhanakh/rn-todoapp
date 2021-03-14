@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, Button } from 'react-native';
+import { View, StyleSheet, Button } from 'react-native';
 import AppCard from '../components/common/AppCard';
 import EditModal from '../components/EditModal';
 import { THEME } from '../theme';
+import AppTextBold from './../components/common/AppTextBold';
 
 export default function TodoScreen({ goBack, todo, deleteTodo, updateTodoTitle }) {
   const [modalVisibility, setModalVisibility] = useState(false);
@@ -24,7 +25,7 @@ export default function TodoScreen({ goBack, todo, deleteTodo, updateTodoTitle }
       />
 
       <AppCard customStyle={styles.card}>
-        <Text style={styles.title}>{todo.title}</Text>
+        <AppTextBold style={styles.title}>{todo.title}</AppTextBold>
         <Button title="Ред." onPress={() => setModalVisibility(true)} />
       </AppCard>
       <View style={styles.buttons}>
