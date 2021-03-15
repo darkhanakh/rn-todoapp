@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput, Button, Modal, Alert } from 'react-native';
 import { THEME } from '../theme';
+import AppButton from './common/AppButton';
 
 export default function EditModal({ visible, onCancel, onSave, value }) {
   const [title, setTitle] = useState(value);
@@ -28,8 +29,10 @@ export default function EditModal({ visible, onCancel, onSave, value }) {
           maxLength={64}
         />
         <View style={styles.buttons}>
-          <Button title="Отменить" onPress={onCancel} color={THEME.DANGER_COLOR} />
-          <Button title="Сохранить" onPress={saveTitle} />
+          <AppButton onClick={saveTitle} color={THEME.DANGER_COLOR}>
+            Отменить
+          </AppButton>
+          <AppButton onClick={onCancel}>Сохранить</AppButton>
         </View>
       </View>
     </Modal>
