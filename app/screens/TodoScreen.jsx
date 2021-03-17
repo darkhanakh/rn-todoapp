@@ -29,19 +29,19 @@ export default function TodoScreen({ goBack, todo, deleteTodo, updateTodoTitle }
 
       <AppCard customStyle={styles.card}>
         <AppTextBold style={styles.title}>{todo.title}</AppTextBold>
-        <AppButton onClick={() => setModalVisibility(true)}>
+        <AppButton onPress={() => setModalVisibility(true)}>
           <FontAwesome name="edit" size={20} />
         </AppButton>
       </AppCard>
       <View style={styles.buttons}>
         <View style={styles.button}>
-          <AppButton onClick={goBack} color={THEME.GREY_COLOR}>
+          <AppButton onPress={goBack} color={THEME.GREY_COLOR}>
             <AntDesign name="back" size={20} color="white" />
           </AppButton>
         </View>
         {/* ----- */}
         <View style={styles.button}>
-          <AppButton onClick={() => deleteTodo(todo.id)} color={THEME.DANGER_COLOR}>
+          <AppButton onPress={() => deleteTodo(todo.id)} color={THEME.DANGER_COLOR}>
             <FontAwesome name="remove" size={20} color="white" />
           </AppButton>
         </View>

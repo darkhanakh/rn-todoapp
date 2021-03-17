@@ -13,3 +13,6 @@ web-build/
 .DS_Store
 
 yarn-error.log
+
+.idea
+.vscode 

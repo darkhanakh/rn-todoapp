@@ -20,7 +20,7 @@ export default function MainScreen({ addTodo, deleteTodo, todos, openTodo }) {
     return () => {
       Dimensions.removeEventListener('change', updateScreen);
     };
-  });
+  }, []);
 
   return (
     <View>

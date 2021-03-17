@@ -29,10 +29,10 @@ export default function EditModal({ visible, onCancel, onSave, value }) {
           maxLength={64}
         />
         <View style={styles.buttons}>
-          <AppButton onClick={saveTitle} color={THEME.DANGER_COLOR}>
+          <AppButton onPress={onCancel} color={THEME.DANGER_COLOR}>
             Отменить
           </AppButton>
-          <AppButton onClick={onCancel}>Сохранить</AppButton>
+          <AppButton onPress={saveTitle}>Сохранить</AppButton>
         </View>
       </View>
     </Modal>

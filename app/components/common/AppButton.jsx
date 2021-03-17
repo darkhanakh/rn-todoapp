@@ -9,11 +9,11 @@ import {
 import AppTextBold from './AppTextBold';
 import { THEME } from './../../theme';
 
-const AppButton = ({ children, onClick, color = THEME.MAIN_COLOR }) => {
-  let Wrapper = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
+const AppButton = ({ children, onPress, color = THEME.MAIN_COLOR }) => {
+  const Wrapper = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
 
   return (
-    <Wrapper onPress={onClick} activeOpacity={0.7}>
+    <Wrapper onPress={onPress} activeOpacity={0.7}>
       <View style={{ ...styles.button, backgroundColor: color }}>
         <AppTextBold style={styles.text}>{children}</AppTextBold>
       </View>
