@@ -11,8 +11,8 @@ import TodoContext from '../context/todo/todoContext';
 export default function MainLayout() {
   const { todos, addTodo, removeTodo, updateTodo } = useContext(TodoContext);
   const [todoId, setTodoId] = useState(null);
-  // const [todos, setTodos] = useState([]);
 
+  // const [todos, setTodos] = useState([]);
   /* const addTodo = title =>
     setTodos(prevTodos => [
       ...prevTodos,
