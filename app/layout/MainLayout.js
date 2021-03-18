@@ -9,11 +9,11 @@ import Navbar from './../components/Navbar';
 import TodoContext from '../context/todo/todoContext';
 
 export default function MainLayout() {
-  const todoContext = useContext(TodoContext);
+  const { todos, addTodo, removeTodo, updateTodo } = useContext(TodoContext);
   const [todoId, setTodoId] = useState(null);
-  const [todos, setTodos] = useState([]);
+  // const [todos, setTodos] = useState([]);
 
-  const addTodo = title =>
+  /* const addTodo = title =>
     setTodos(prevTodos => [
       ...prevTodos,
       {
@@ -56,13 +56,13 @@ export default function MainLayout() {
         return todo;
       }),
     );
-  };
+  }; */
 
   let content = (
     <MainScreen
       addTodo={addTodo}
-      deleteTodo={deleteTodo}
-      todos={todoContext.todos}
+      deleteTodo={removeTodo}
+      todos={todos}
       openTodo={setTodoId}></MainScreen>
   );
 
@@ -72,8 +72,8 @@ export default function MainLayout() {
       <TodoScreen
         goBack={() => setTodoId(null)}
         todo={selectedTodo}
-        deleteTodo={deleteTodo}
-        updateTodoTitle={updateTodoTitle}
+        deleteTodo={removeTodo}
+        updateTodoTitle={updateTodo}
       />
     );
   }
