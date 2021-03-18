@@ -3,7 +3,7 @@ import React, { useReducer } from 'react';
 import ScreenContext from './screenContext';
 import screenReducer from './screenReducer';
 
-import { CHANGE_SCREEN } from './../types';
+import { CHANGE_SCREEN } from './../actions';
 
 export default function ScreenState({ children }) {
   const [state, dispatch] = useReducer(screenReducer, null);

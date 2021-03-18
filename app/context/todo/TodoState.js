@@ -1,4 +1,5 @@
 import React, { useReducer, useContext } from 'react';
+import axios from 'axios';
 import { Alert } from 'react-native';
 
 import {
@@ -9,10 +10,11 @@ import {
   HIDE_LOADER,
   SHOW_ERROR,
   CLEAR_ERROR,
-} from '../types';
+} from '../actions';
 import TodoContext from './todoContext';
 import todoReducer from './todoReducer';
 import ScreenContext from './../screen/screenContext';
+import { API_URL } from './../../../constants';
 
 export const TodoState = ({ children }) => {
   const initialState = {
@@ -24,7 +26,13 @@ export const TodoState = ({ children }) => {
   const { changeScreen } = useContext(ScreenContext);
   const [state, dispatch] = useReducer(todoReducer, initialState);
 
-  const addTodo = title => dispatch({ type: ADD_TODO, title });
+  const addTodo = async title => {
+    const { data } = await axios.post(API_URL, {
+      title,
+    });
+
+    dispatch({ type: ADD_TODO, title, id: data.name });
+  };
 
   const removeTodo = id => {
     const selectedTodoTitle = state.todos.find(t => t.id === id).title;
