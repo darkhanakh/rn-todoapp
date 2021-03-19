@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 const AppText = props => (
-  <Text style={{ ...styles.default, ...props.customStyles }}>{props.children}</Text>
+  <Text style={{ ...styles.default, ...props.style }}>{props.children}</Text>
 );
 
 export default AppText;

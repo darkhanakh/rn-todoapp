@@ -72,11 +72,17 @@ export const TodoState = ({ children }) => {
 
   const fetchTodos = async () => {
     showLoader();
-    const { data } = await axios.get(API_URL);
-    const todos = Object.keys(data).map(key => ({ ...data[key], id: key }));
-    // console.log(todos);
-    dispatch({ type: FETCH_TODOS, todos });
-    hideLoader();
+    clearError();
+    try {
+      const { data } = await axios.get(API_URL);
+      const todos = Object.keys(data).map(key => ({ ...data[key], id: key }));
+      dispatch({ type: FETCH_TODOS, todos });
+    } catch (e) {
+      showError('Что-то пошло не так...');
+      console.log(e);
+    } finally {
+      hideLoader();
+    }
   };
 
   return (

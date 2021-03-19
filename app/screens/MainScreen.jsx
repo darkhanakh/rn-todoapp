@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
-import { View, StyleSheet, FlatList, Image, Dimensions, ActivityIndicator } from 'react-native';
+import { View, StyleSheet, FlatList, Image, Dimensions } from 'react-native';
 
 import AddTodo from '../components/AddTodo';
 import Todo from '../components/Todo';
@@ -7,6 +7,8 @@ import { THEME } from '../theme';
 import TodoContext from './../context/todo/todoContext';
 import ScreenContext from './../context/screen/screenContext';
 import AppLoader from '../components/common/AppLoader';
+import AppText from './../components/common/AppText';
+import AppButton from './../components/common/AppButton';
 
 export default function MainScreen() {
   const [deviceWidth, setDeviceWidth] = useState(
@@ -35,6 +37,15 @@ export default function MainScreen() {
 
   if (loading) {
     return <AppLoader />;
+  }
+
+  if (error) {
+    return (
+      <View style={styles.center}>
+        <AppText style={styles.error}>{error}</AppText>
+        <AppButton onPress={loadTodos}>Повторить</AppButton>
+      </View>
+    );
   }
 
   return (
@@ -73,5 +84,15 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%',
+  },
+  center: {
+    flex: 1,
+    justifyContent: 'center',
+    alignContent: 'center',
+  },
+  error: {
+    fontSize: 20,
+    color: THEME.DANGER_COLOR,
+    textAlign: 'center',
   },
 });
