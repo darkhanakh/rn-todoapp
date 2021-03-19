@@ -10,6 +10,7 @@ import {
   HIDE_LOADER,
   SHOW_ERROR,
   CLEAR_ERROR,
+  FETCH_TODOS,
 } from '../actions';
 import TodoContext from './todoContext';
 import todoReducer from './todoReducer';
@@ -69,13 +70,25 @@ export const TodoState = ({ children }) => {
 
   const clearError = () => dispatch({ type: CLEAR_ERROR });
 
+  const fetchTodos = async () => {
+    showLoader();
+    const { data } = await axios.get(API_URL);
+    const todos = Object.keys(data).map(key => ({ ...data[key], id: key }));
+    // console.log(todos);
+    dispatch({ type: FETCH_TODOS, todos });
+    hideLoader();
+  };
+
   return (
     <TodoContext.Provider
       value={{
         todos: state.todos,
+        loading: state.loading,
+        error: state.error,
         addTodo,
         removeTodo,
         updateTodo,
+        fetchTodos,
       }}>
       {children}
     </TodoContext.Provider>

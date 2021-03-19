@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
+import axios from 'axios';
 
 import MainLayout from './app/layout/MainLayout';
 import { TodoState } from './app/context/todo/TodoState';
 import ScreenState from './app/context/screen/ScreenState';
+import { API_URL } from './constants';
 
 async function loadApplication() {
   await Font.loadAsync({
