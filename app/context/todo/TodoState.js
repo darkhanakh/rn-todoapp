@@ -16,6 +16,7 @@ import TodoContext from './todoContext';
 import todoReducer from './todoReducer';
 import ScreenContext from './../screen/screenContext';
 import { API_URL } from './../../../constants';
+import Http from '../../Http';
 
 export const TodoState = ({ children }) => {
   const initialState = {
@@ -53,7 +54,7 @@ export const TodoState = ({ children }) => {
             await axios.delete(
               `https://rn-todo-app-a7f30-default-rtdb.firebaseio.com/todos/${id}.json`,
             );
-            dispatch({ type: REMOVE_TODO, id: id });
+            dispatch({ type: REMOVE_TODO, id });
           },
         },
       ],
