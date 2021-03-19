@@ -19,8 +19,8 @@ export default function TodoScreen() {
 
   const cancelModal = () => setModalVisibility(false);
 
-  const saveHandler = title => {
-    updateTodo(todo.id, title);
+  const saveHandler = async title => {
+    await updateTodo(todo.id, title);
     setModalVisibility(false);
   };
 

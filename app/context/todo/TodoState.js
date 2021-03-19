@@ -60,7 +60,18 @@ export const TodoState = ({ children }) => {
     );
   };
 
-  const updateTodo = (id, title) => dispatch({ type: UPDATE_TODO, id, title });
+  const updateTodo = async (id, title) => {
+    clearError();
+    try {
+      await axios.patch(`https://rn-todo-app-a7f30-default-rtdb.firebaseio.com/todos/${id}.json`, {
+        title,
+      });
+      dispatch({ type: UPDATE_TODO, id, title });
+    } catch (e) {
+      showError('Что-то пошло не так...');
+      console.log(e);
+    }
+  };
 
   const showLoader = () => dispatch({ type: SHOW_LOADER });
 
