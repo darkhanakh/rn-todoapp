@@ -48,8 +48,11 @@ export const TodoState = ({ children }) => {
         {
           text: 'Удалить',
           style: 'destructive',
-          onPress() {
+          async onPress() {
             changeScreen(null);
+            await axios.delete(
+              `https://rn-todo-app-a7f30-default-rtdb.firebaseio.com/todos/${id}.json`,
+            );
             dispatch({ type: REMOVE_TODO, id: id });
           },
         },
